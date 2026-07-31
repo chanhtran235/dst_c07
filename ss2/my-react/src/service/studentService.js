@@ -19,3 +19,11 @@ export function getAll(){
     // call API của BE
     return [...studentList]
 }
+export function deleteById(id){
+    for (let i = 0; i <studentList.length ; i++) {
+        if (id==studentList[i].id){
+            studentList.splice(i,1);
+            break;
+        }
+    }
+}
