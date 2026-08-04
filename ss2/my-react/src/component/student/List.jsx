@@ -3,6 +3,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {getAll} from "../../service/studentService.js";
 import Delete from "./Delete.jsx";
 import Add from "./Add.jsx";
+import {Link} from "react-router-dom";
 
 const List = ()=>{
     const [studentList, setStudentList] = useState([]);
@@ -29,13 +30,14 @@ const List = ()=>{
         <>
             {console.log("-----------list render-------------")}
             <h2>Danh sách sinh viên</h2>
-            <Add  setIsReloading = {setIsReloading} />
+            <Link className={'btn btn-sm btn-primary'} to={'/dashboard/student/add'}>Thêm mới</Link>
             <table className={'table table-dark table-striped'}>
                 <thead>
                 <tr>
                     <th>STT</th>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>View</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
@@ -45,6 +47,9 @@ const List = ()=>{
                         <td>{i+1}</td>
                         <td>{student.id}</td>
                         <td>{student.name}</td>
+                        <td>
+                            <Link to={`/dashboard/student/detail/${student.id}`}>View</Link>
+                        </td>
                         <td>
                             <button className={'btn btn-sm btn-danger'}
                                     onClick={()=>{

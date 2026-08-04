@@ -30,3 +30,11 @@ export function deleteById(id){
         }
     }
 }
+export function findById(id){
+    for (let i = 0; i <studentList.length ; i++) {
+        if (id==studentList[i].id){
+           return studentList[i];
+        }
+    }
+    return null;
+}
