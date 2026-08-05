@@ -1,13 +1,17 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {findById} from "../../service/studentService.js";
+import {findById, getAll} from "../../service/studentService.js";
 
 const Detail = ()=>{
     const [student, setStudent] = useState();
     const {id} =useParams();
     useEffect(() => {
-        const currentStudent = findById(id);
-        setStudent(currentStudent);
+        const fetData = async ()=>{
+            const student = await findById(id);
+            setStudent(student);
+        }
+        fetData();
+
     }, []);
     return (
         <>

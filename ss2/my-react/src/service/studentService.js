@@ -1,40 +1,41 @@
+import axios from "axios";
 
-const studentList = [
-    {
-        id:1,
-        name:"chánh1"
-    },
-    {
-        id:2,
-        name:"chánh2"
-    },
-    {
-        id:3,
-        name:"chánh3"
-    }
-]
+const API_URL = import.meta.env.VITE_API_URL
 
 // hàm call API một danh sách sinh viên;
-export function getAll(){
-    // call API của BE
-    return [...studentList]
-}
-export function addNew(student){
-    studentList.push(student);
-}
-export function deleteById(id){
-    for (let i = 0; i <studentList.length ; i++) {
-        if (id==studentList[i].id){
-            studentList.splice(i,1);
-            break;
-        }
+export async function getAll(){
+    try{
+        const res = await axios.get(`${API_URL}/students`);
+        return res.data;
+    }catch (e){
+        console.log(e);
     }
+    return [];
 }
-export function findById(id){
-    for (let i = 0; i <studentList.length ; i++) {
-        if (id==studentList[i].id){
-           return studentList[i];
-        }
+export async function addNew(student){
+    try{
+        const res = await axios.post(`${API_URL}/students`,student);
+        return res.status ==201;
+    }catch (e){
+        console.log(e);
+    }
+    return false;
+}
+export async function deleteById(id){
+    try{
+        const res = await axios.delete(`${API_URL}/students/${id}`);
+        return res.status ==200;
+    }catch (e){
+        console.log(e);
+    }
+    return false;
+}
+export async function findById(id){
+    try{
+        const res = await axios.get(`${API_URL}/students/${id}`);
+        return res.data;
+    }catch (e){
+        console.log(e);
     }
     return null;
 }

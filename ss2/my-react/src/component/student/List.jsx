@@ -13,9 +13,16 @@ const List = ()=>{
         id:"",
         name:""
     });
+
     useEffect(() => {
         console.log("-----------effect------------");
-        setStudentList([...getAll()])
+        const fetData = async ()=>{
+            const list = await getAll();
+            setStudentList(list);
+        }
+        fetData();
+
+
     },[isReloading]);
     const openModal =(student)=>{
       setShowModal(true);
@@ -37,6 +44,7 @@ const List = ()=>{
                     <th>STT</th>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Class Name</th>
                     <th>View</th>
                     <th>Delete</th>
                 </tr>
@@ -47,6 +55,7 @@ const List = ()=>{
                         <td>{i+1}</td>
                         <td>{student.id}</td>
                         <td>{student.name}</td>
+                        <td>{student.classCG.name}</td>
                         <td>
                             <Link to={`/dashboard/student/detail/${student.id}`}>View</Link>
                         </td>
