@@ -24,7 +24,7 @@ export async function addNew(student){
 export async function deleteById(id){
     try{
         const res = await axios.delete(`${API_URL}/students/${id}`);
-        return res.status ==200;
+        return res.status ==204;
     }catch (e){
         console.log(e);
     }

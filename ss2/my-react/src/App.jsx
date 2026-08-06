@@ -10,6 +10,7 @@ import Add from "./component/student/Add.jsx";
 import Dashboard from "./component/dashboard/Dashboard.jsx";
 import {ToastContainer} from "react-toastify";
 import Detail from "./component/student/Detail.jsx";
+import Login from "./component/user/Login.jsx";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             <Header/>
             <Routes>
                <Route path={'/'} element={<Home/>}/>
+               <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/dashboard'} element={<Dashboard/>}>
                     <Route path={'student'} element={<List/>}/>
                     <Route path={'student/add'} element={<Add/>}/>

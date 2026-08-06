@@ -1,6 +1,11 @@
 import {Link, NavLink} from "react-router-dom";
+import {Button} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../redux/action.js";
 
 const Header =()=>{
+    const account = useSelector(state => state.user);
+    const dispatch = useDispatch();
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
@@ -18,6 +23,20 @@ const Header =()=>{
                             <NavLink to={'/dashboard'} >Dashboard</NavLink>
                         </li>
                     </ul>
+                </div>
+                <div>
+                    {
+                        (account==null)?(<Link className={'mx-lg-5'} to={'/login'}>Login</Link>):""
+                    }
+
+                    <span>{account?.username}</span>
+                    {
+                        (account !=null)?( <Button onClick={()=>{
+                            dispatch(logout());
+                        }} className={'btn btn-sm mx-lg-5'} >Logout</Button>):""
+                    }
+
+
                 </div>
             </div>
         </nav>

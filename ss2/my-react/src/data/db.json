@@ -7,14 +7,6 @@
         "id": 2,
         "name": "C08"
       }
-    },
-    {
-      "id": "23",
-      "name": "Chanh Tran",
-      "classCG": {
-        "id": 3,
-        "name": "C09"
-      }
     }
   ],
   "classes": [
@@ -29,6 +21,18 @@
     {
       "id": 3,
       "name": "C09"
+    }
+  ],
+  "accounts": [
+    {
+      "username": "chanhtv",
+      "password": 123,
+      "role": "ADMIN"
+    },
+    {
+      "username": "haitt",
+      "password": 123,
+      "role": "USER"
     }
   ]
 }

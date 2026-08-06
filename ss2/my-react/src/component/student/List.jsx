@@ -55,7 +55,7 @@ const List = ()=>{
                         <td>{i+1}</td>
                         <td>{student.id}</td>
                         <td>{student.name}</td>
-                        <td>{student.classCG.name}</td>
+                        <td>{student.classCG?.name}</td>
                         <td>
                             <Link to={`/dashboard/student/detail/${student.id}`}>View</Link>
                         </td>
